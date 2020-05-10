@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+
+$dv = 85;
+$dn = 95;
+open VOR, "/usr/local/lib/realname/vor";
+open NACH, "/usr/local/lib/realname/nach";
+@v = <VOR>;
+@n = <NACH>;
+
+my $rnd2 = int(rand($#n))+1; 
+#my $rnd3 = int(rand($#cr))+1; 
+#my $rnd4 = int(rand($#ew))+1; my $rnd5 = int(rand($#az))+1;
+$_ = $v[int(rand($#v))+1];
+if(rand(100) > $dv) 
+{
+	$_ .= 	'-' . $v[int(rand($#v))+1];
+	$nd = int($dn - ($dv / 3));
+}
+s/\n//g;
+$vn = $_;
+
+$_ = $n[int(rand($#n))+1];
+if(rand(100) > $dn) 
+{
+	$_ .= 	'-' . $v[int(rand($#n))+1];
+}
+s/\n//g;
+$nn = $_;
+
+print "Ihr Realname ist: $vn $nn\n";
